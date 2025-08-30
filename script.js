@@ -50,11 +50,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const sections = document.querySelectorAll("section[id]");
   window.addEventListener("scroll", () => {
     let scrollY = window.scrollY + 200; // offset for navbar heightś
-    console.log(scrollY)
     sections.forEach((section) => {
       const sectionTop = section.offsetTop;
       const sectionHeight = section.offsetHeight;
-      console.log(sectionHeight);
       const sectionId = section.getAttribute("id");
 
       if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
@@ -74,6 +72,27 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       navbar.classList.remove("scrolled");
     }
+  });
+});
+
+//back to top button
+const backToTop = document.getElementById("back-to-top");
+//show button when scrolling down
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 300) {
+    backToTop.style.opacity = 1;
+    backToTop.style.transform = "translateY(0)";
+  } else {
+    backToTop.style.opacity = 0;
+    backToTop.style.transform = "translateY(20pX)";
+  }
+});
+
+// smooth scroll when button clicked
+backToTop.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"    
   });
 });
 
