@@ -49,11 +49,12 @@ document.addEventListener("DOMContentLoaded", () => {
   // 2C. Active link highlighting on scroll
   const sections = document.querySelectorAll("section[id]");
   window.addEventListener("scroll", () => {
-    let scrollY = window.scrollY + 200; // offset for navbar height
-
+    let scrollY = window.scrollY + 200; // offset for navbar heightś
+    console.log(scrollY)
     sections.forEach((section) => {
       const sectionTop = section.offsetTop;
       const sectionHeight = section.offsetHeight;
+      console.log(sectionHeight);
       const sectionId = section.getAttribute("id");
 
       if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
@@ -75,10 +76,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
-
-
-
-
 
 // 3. THEME TOGGLE
 // - Dark/Light mode switcher
