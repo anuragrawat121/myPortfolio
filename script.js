@@ -84,7 +84,7 @@ window.addEventListener("scroll", () => {
     backToTop.style.transform = "translateY(0)";
   } else {
     backToTop.style.opacity = 0;
-    backToTop.style.transform = "translateY(20pX)";
+    backToTop.style.transform = "translateY(20px  )";
   }
 });
 
@@ -92,11 +92,27 @@ window.addEventListener("scroll", () => {
 backToTop.addEventListener("click", () => {
   window.scrollTo({
     top: 0,
-    behavior: "smooth"    
+    behavior: "smooth",
   });
 });
 
 // 3. THEME TOGGLE
+const toggleBtn = document.getElementById("theme-toggle");
+
+toggleBtn.addEventListener("click", () => {
+  document.documentElement.classList.toggle("light-theme");
+
+  // optional: change icon dynamically
+  const icon = toggleBtn.querySelector("i");
+  if (document.documentElement.classList.contains("light-theme")) {
+    icon.classList.remove("fa-moon");
+    icon.classList.add("fa-sun");
+  } else {
+    icon.classList.remove("fa-sun");
+    icon.classList.add("fa-moon");
+  }
+});
+
 // - Dark/Light mode switcher
 // - Save theme preference in localStorage
 // - Smooth color transitions
