@@ -54,13 +54,30 @@
   color: var(--text-primary);
   box-shadow: var(--shadow-sm); /* optional subtle shadow */
 }
+:root,
+:root.light-theme {
+  transition: --bg-primary 0.5s ease, --bg-secondary 0.5s ease,
+    --bg-card 0.5s ease, --text-primary 0.5s ease, --text-secondary 0.5s ease,
+    --text-muted 0.5s ease, --accent-gradient 0.5s ease;
+}
+
+body,
+.navbar,
+.profile-image,
+.image-glow,
+.hero,
+.project-card,
+footer {
+  transition: background 0.5s ease, color 0.5s ease, opacity 0.5s ease;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-html{
+html {
   scroll-behavior: auto;
 }
 
@@ -496,7 +513,6 @@ nav.scrolled {
   background: var(--primary-gradient);
   border-radius: 50%;
   opacity: 0.6;
-  z-index: 1;
   animation: float 6s ease-in-out infinite;
 }
 
@@ -764,6 +780,7 @@ nav.scrolled {
   max-width: 600px;
   margin: 0 auto;
 }
+
 
 /* Animations */
 @keyframes float {

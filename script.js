@@ -97,31 +97,51 @@ backToTop.addEventListener("click", () => {
 });
 
 // 3. THEME TOGGLE
+// - Dark/Light mode switcher
 const toggleBtn = document.getElementById("theme-toggle");
 
 toggleBtn.addEventListener("click", () => {
   document.documentElement.classList.toggle("light-theme");
 
   // optional: change icon dynamically
+  // - Save theme preference in localStorage
   const icon = toggleBtn.querySelector("i");
   if (document.documentElement.classList.contains("light-theme")) {
-    icon.classList.remove("fa-moon");
-    icon.classList.add("fa-sun");
+    icon.classList.replace("fa-moon", "fa-sun");
+    localStorage.setItem("theme", "light"); // save preference
   } else {
-    icon.classList.remove("fa-sun");
-    icon.classList.add("fa-moon");
+    icon.classList.replace("fa-sun", "fa-moon");
+    localStorage.setItem("theme", "dark"); // save preference
+  }
+});
+// Load the preference when the page loads
+document.addEventListener("DOMContentLoaded", () => {
+  const savedTheme = localStorage.getItem("theme");
+  const toggleIcon = toggleBtn.querySelector("i");
+
+  if (savedTheme === "light") {
+    document.documentElement.classList.add("light-theme");
+    toggleIcon.classList.replace("fa-moon", "fa-sun");
+  } else {
+    document.documentElement.classList.remove("light-theme");
+    toggleIcon.classList.replace("fa-sun", "fa-moon");
   }
 });
 
-// - Dark/Light mode switcher
-// - Save theme preference in localStorage
-// - Smooth color transitions
-
 // 4. SCROLL EFFECTS
 // - Update scroll progress bar
+const scrollProgress = document.getElementById("scroll-progress");
+
+window.addEventListener("scroll", () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const scrollPercent = (scrollTop / docHeight) * 100;
+  scrollProgress.style.width = scrollPercent + "%";
+});
+
 // - Parallax scrolling effects
 // - Fade in animations on scroll (Intersection Observer)
-// - Show/hide back-to-top button
+
 
 // 5. TYPING ANIMATION
 // - Typewriter effect for hero title
