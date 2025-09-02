@@ -139,12 +139,23 @@ window.addEventListener("scroll", () => {
   scrollProgress.style.width = scrollPercent + "%";
 });
 
-// - Parallax scrolling effects
-// - Fade in animations on scroll (Intersection Observer)
-
-
 // 5. TYPING ANIMATION
 // - Typewriter effect for hero title
+document.addEventListener("DOMContentLoaded", () => {
+  const el = document.getElementById("typed");
+  const text = "Full Stack Developer";
+  let i = 0;
+
+  function type() {
+    if (i < text.length) {
+      el.textContent += text.charAt(i);
+      i++;
+      setTimeout(type, 100);
+    }
+  }
+  type();
+});
+
 // - Multiple text rotation
 
 // 6. STATISTICS COUNTER

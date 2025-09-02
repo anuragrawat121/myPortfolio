@@ -357,6 +357,34 @@ nav.scrolled {
   animation: pulse 2s infinite;
 }
 
+.cursor {
+  display: inline-block;
+  width: 1px; /* thin bar cursor */
+  height: 1em;
+  margin-left: 6px;
+  background: var(--text-primary); /* visible in both themes */
+  animation: blink 0.8s steps(1) infinite;
+  vertical-align: -0.1em;
+}
+
+#hero-title::after {
+  content: "|";
+  animation: blink 0.7s infinite;
+  margin-left: 4px;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .hero-title {
   font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 800;
@@ -488,7 +516,7 @@ nav.scrolled {
 }
 
 .profile-image {
-  width: 100%;
+  width: 320px;
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
@@ -781,8 +809,13 @@ nav.scrolled {
   margin: 0 auto;
 }
 
-
 /* Animations */
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
 @keyframes float {
   0%,
   100% {
@@ -887,7 +920,6 @@ nav.scrolled {
     font-size: 2rem;
   }
 }
-
 @media (max-width: 480px) {
   .hero-title {
     font-size: 2rem;
